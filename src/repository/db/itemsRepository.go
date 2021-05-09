@@ -3,8 +3,8 @@ package db
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/danielgom/bookstore_itemsapi/datasource/client/elastic"
-	"github.com/danielgom/bookstore_itemsapi/domain/items"
+	"github.com/danielgom/bookstore_itemsapi/src/datasource/client/elastic"
+	"github.com/danielgom/bookstore_itemsapi/src/domain/items"
 	"github.com/danielgom/bookstore_utils-go/errors"
 	"github.com/danielgom/bookstore_utils-go/logger"
 	"io"
@@ -22,6 +22,7 @@ var ItemRepository itemRepositoryInterface = &itemRepository{}
 type itemRepositoryInterface interface {
 	Save(*items.Item) errors.RestErr
 	Get(string) (*items.Item, errors.RestErr)
+	SimpleSearch(string) ([]items.Item, error)
 }
 
 type itemRepository struct {
@@ -81,4 +82,23 @@ func (r *itemRepository) Get(id string) (*items.Item, errors.RestErr) {
 	}
 
 	return &source.Source, nil
+}
+
+func (r *itemRepository) SimpleSearch(index string) ([]items.Item, error) {
+
+	var query map[string]interface{}
+
+	res, err := elastic.EsClient.Search(index, query)
+	if err != nil {
+		return nil, errors.NewInternalServerError("error trying to search the items", err)
+	}
+
+	defer func() {
+		err := res.Body.Close()
+		if err != nil {
+			logger.Error("error closing the response body", err.Error())
+		}
+	}()
+
+	return nil, nil
 }

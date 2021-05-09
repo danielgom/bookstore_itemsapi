@@ -1,8 +1,8 @@
 package services
 
 import (
-	"github.com/danielgom/bookstore_itemsapi/domain/items"
-	"github.com/danielgom/bookstore_itemsapi/repository/db"
+	"github.com/danielgom/bookstore_itemsapi/src/domain/items"
+	"github.com/danielgom/bookstore_itemsapi/src/repository/db"
 	"github.com/danielgom/bookstore_utils-go/errors"
 )
 

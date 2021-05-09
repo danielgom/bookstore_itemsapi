@@ -2,9 +2,9 @@ package controllers
 
 import (
 	"encoding/json"
-	"github.com/danielgom/bookstore_itemsapi/domain/items"
-	"github.com/danielgom/bookstore_itemsapi/services"
-	"github.com/danielgom/bookstore_itemsapi/utils/httpUtils"
+	"github.com/danielgom/bookstore_itemsapi/src/domain/items"
+	"github.com/danielgom/bookstore_itemsapi/src/services"
+	"github.com/danielgom/bookstore_itemsapi/src/utils/httpUtils"
 	"github.com/danielgom/bookstore_oauth-go/oauth"
 	"github.com/danielgom/bookstore_utils-go/errors"
 	"github.com/danielgom/bookstore_utils-go/logger"

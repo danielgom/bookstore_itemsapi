@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"github.com/danielgom/bookstore_itemsapi/utils/httpUtils"
+	"github.com/danielgom/bookstore_itemsapi/src/utils/httpUtils"
 	"net/http"
 )
 
