@@ -17,6 +17,7 @@ func ResponseJson(w http.ResponseWriter, status int, body interface{}) {
 	if e != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 	}
+
 	w.WriteHeader(status)
 }
 

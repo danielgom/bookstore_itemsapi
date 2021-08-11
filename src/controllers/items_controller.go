@@ -32,6 +32,7 @@ func (c *itemsController) Create(w http.ResponseWriter, r *http.Request) {
 	}
 
 	body, err := io.ReadAll(r.Body)
+
 	if err != nil {
 		restErr := errors.NewBadRequestError("Invalid request body")
 		httpUtils.ResponseError(w, restErr)
@@ -44,6 +45,7 @@ func (c *itemsController) Create(w http.ResponseWriter, r *http.Request) {
 			log.Fatal()
 		}
 	}()
+
 
 	item := new(items.Item)
 	if err := json.Unmarshal(body, item); err != nil {
